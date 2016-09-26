@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.List;
+import org.sql2o.*;
+// import java.sql.Date;
+
 public class Sunglasses {
   private String name;
   private String imgURL;
@@ -5,6 +10,7 @@ public class Sunglasses {
   private int price;
   private int id;
   private int customerId;
+  // private Date purchaseDate;
 
   public Sunglasses(String _name, String _imgURL, String _description, int _price) {
     this.name = _name;
@@ -61,6 +67,36 @@ public class Sunglasses {
        this.getPrice() == newSunglasses.getPrice() &&
        this.getId() == newSunglasses.getId() &&
        this.getCustomerId() == newSunglasses.getCustomerId();
+    }
+  }
+
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO sunglasses (name, description, imgURL, price) VALUES (:name, :description, :imgURL, :price);";
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("name", this.name)
+        .addParameter("description", this.description)
+        .addParameter("imgURL", this.imgURL)
+        .addParameter("price", this.price)
+        .executeUpdate()
+        .getKey();
+    }
+  }
+
+  public static List<Sunglasses> all() {
+    String sql = "SELECT * FROM sunglasses;";
+    try (Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Sunglasses.class);
+    }
+  }
+
+  public static Sunglasses find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM sunglasses where id = :id;";
+      Sunglasses sunglasses = con.createQuery(sql)
+      .addParameter("id", id)
+      .executeAndFetchFirst(Sunglasses.class);
+      return sunglasses;
     }
   }
 }
