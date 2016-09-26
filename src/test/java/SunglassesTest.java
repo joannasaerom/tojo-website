@@ -31,7 +31,7 @@ public class SunglassesTest {
   }
 
   @Test
-  public void getPrice_instantiatesWithPrice_Double() {
+  public void getPrice_instantiatesWithPrice_10() {
     Sunglasses mySunglasses = new Sunglasses("Gigi", "www.example.com", "hot", 10);
     assertEquals(10, mySunglasses.getPrice());
   }
