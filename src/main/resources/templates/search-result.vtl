@@ -1,0 +1,43 @@
+<div class="center">
+  <h2>Sunglasses</h2>
+  #if (!($sunglasses.isEmpty()))
+  <div class="hoverColumns">
+  #foreach ($sunglass in $sunglasses)
+    <div class="imgColumns">
+      <div class="hoverImage">
+        <a href="/sunglasses/$sunglass.getId()">
+          <img src="$sunglass.getImgUrl()" class="img-responsive">
+          <div class="hoverText">
+            <h3>$sunglass.getName()</h3>
+          </div>
+        </a>
+      </div>
+    </div>
+  #end
+  </div>
+  #else
+  <p>No results</p>
+  #end
+</div>
+
+<div class="center">
+  <h2>Watch</h2>
+  #if (!($watches.isEmpty()))
+  <div class="hoverColumns">
+  #foreach ($watch in $watches)
+    <div class="imgColumns">
+      <div class="hoverImage">
+        <a href="/watches/$watch.getId()">
+          <img src="$watch.getImgUrl()" class="img-responsive">
+          <div class="hoverText">
+            <h3>$watch.getName()</h3>
+          </div>
+        </a>
+      </div>
+    </div>
+  #end
+  </div>
+  #else
+  <p>No results</p>
+  #end
+</div>

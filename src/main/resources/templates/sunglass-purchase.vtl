@@ -1,18 +1,9 @@
-<!-- Navigation Bar -->
-<div class="nav">
-  <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/sunglasses">Sunglasses</a></li>
-    <li><a href="#">Watches</a></li>
-    <li><a href="/accounts">Account</a></li>
-    <li><a href="/inventory">Inventory</a></li>
-  </ul>
-</div>
+
 <div class="sunglassDescription">
   <h2>$sunglass.getName()</h2>
   <img src="$sunglass.getImgUrl()">
   <h4>Description: $sunglass.getDescription()</h4>
-  <h4>Price: $sunglass.getPrice()</h4>
+  <h4>Price: $$sunglass.getPrice().00</h4>
   <h4>Remaining Quantity: $sunglass.getInventory()</h4>
 </div>
 <br>
