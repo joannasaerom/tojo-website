@@ -1,0 +1,27 @@
+<!-- Navigation Bar -->
+<div class="nav">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/sunglasses">Sunglasses</a></li>
+    <li><a href="#">Watches</a></li>
+    <li><a href="#">Account</a></li>
+    <li><a href="/inventory">Inventory</a></li>
+  </ul>
+</div>
+<!-- List of sunglasses in inventory -->
+<div class="">
+  #if (!($sunglasses.isEmpty()))
+  <a href="/inventory/sunglasses/new"><p>Add sunglasses</p></a>
+  #foreach ($sunglass in $sunglasses)
+  <img src="$sunglass.getImgUrl()" class="img-responsive">
+  <a href="/inventory/sunglasses/$sunglass.getId()"><h4>$sunglass.getName()</h4></a>
+  <div class="editIcons">
+    <a href="/inventory/sunglasses/$sunglass.getId()/edit"><button type="submit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
+    <a href="/inventory/sunglasses/$sunglass.getId()/delete"><button type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button></a>
+  </div>
+  #end
+  #else
+  <p>No inventory</p>
+  <a href="/inventory/sunglasses/new"><p>Add one now</p></a>
+  #end
+</div>

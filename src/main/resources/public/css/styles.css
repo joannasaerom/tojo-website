@@ -1,0 +1,127 @@
+.nav li{
+  list-style-type: none;
+  float: left;
+  padding: 10px;
+  margin-left: 0px
+}
+.nav a{
+  color: black;
+  text-decoration: none;
+}
+.nav a:hover{
+  color: black;
+}
+.mainBanner img {
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+  filter: grayscale(10%);
+  -webkit-filter: grayscale(10%);
+}
+.mainBanner img:hover {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  filter: grayscale(70%);
+  -webkit-filter: grayscale(70%);
+}
+.image-box{
+  width: 1000px;
+  overflow: hidden;
+  display: block;
+  margin: 0 auto;
+  margin-top: 2%;
+}
+.sunglassesBanner{
+  max-width: 1000px;
+  height: 350px;
+  overflow: hidden;
+  display: block;
+  margin: 0 auto;
+}
+.inventoryImg{
+  max-width: 500px;
+  overflow: hidden;
+  display: block;
+  margin: 0 auto;
+}
+
+.bannerText{
+  position: absolute;
+  top: 250px;
+  max-width: 1000px;
+}
+.inventoryHover{
+  width: 500px;
+  position: absolute;
+  top: 500px;
+}
+h1{
+  color: white;
+  font-size: 7em;
+  width: 1000px;
+  text-align: center;
+}
+h2{
+  color: white;
+  font-size: 6em;
+  width: 1000px;
+  text-align: center;
+}
+.sunglassesBanner .bannerText{
+  top: 130px;
+}
+.center img {
+  float: left;
+}
+.imgColumns{
+  float: left;
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.hoverImage{
+  background-color: rgba(0,0,0,0);
+  overflow: hidden;
+  width: 250px;
+  /*height: 200px;*/
+}
+.hoverImage img{
+  opacity: 1;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+  margin: 0 auto;
+}
+
+.hoverText {
+  position: absolute;
+  top: 15%;
+  opacity: 0;
+  max-width: 250px;
+}
+.hoverText h3{
+  text-align: center;
+  width: 250px;
+}
+
+.hoverImage a:hover{
+  color: white;
+  text-decoration: none;
+  background-color: none;
+}
+
+.hoverImage:hover .hoverText{
+  opacity: 1;
+}
+.hoverImage:hover img{
+  opacity: 0.5;
+  background-color: rgba(0,0,0,0.9);
+}
+
+.hoverImage:hover{
+  background-color: rgba(0,0,102,0.9);
+}
+.hoverColumns{
+  max-width: 1000px;
+  display: block;
+  margin: 0 auto;
+}

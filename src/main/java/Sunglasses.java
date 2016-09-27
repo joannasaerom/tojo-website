@@ -43,17 +43,21 @@ public class Sunglasses {
     return customerId;
   }
 
-  // public void setName(String _name) {
-  //   this.name = _name;
-  // }
-  //
-  // public void setImgUrl(String _imgURL) {
-  //   this.imgURL = _imgURL;
-  // }
-  //
-  // public void setPrice(int _price) {
-  //   this.price = _price;
-  // }
+  public void setName(String _name) {
+    this.name = _name;
+  }
+
+  public void setImgUrl(String _imgURL) {
+    this.imgURL = _imgURL;
+  }
+
+  public void setPrice(int _price) {
+    this.price = _price;
+  }
+
+  public void setDescription(String _description) {
+    this.description = _description;
+  }
 
   @Override
   public boolean equals(Object otherSunglasses) {
@@ -83,9 +87,22 @@ public class Sunglasses {
     }
   }
 
+  public void update() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE sunglasses SET (name, description, imgURL, price) = (:name, :description, :imgURL, :price) WHERE id = :id;";
+      con.createQuery(sql)
+      .addParameter("name", this.name)
+      .addParameter("description", this.description)
+      .addParameter("imgURL", this.imgURL)
+      .addParameter("price", this.price)
+      .addParameter("id", this.id)
+      .executeUpdate();
+    }
+  }
+
   public static List<Sunglasses> all() {
     String sql = "SELECT * FROM sunglasses;";
-    try (Connection con = DB.sql2o.open()) {
+    try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Sunglasses.class);
     }
   }
@@ -97,6 +114,15 @@ public class Sunglasses {
       .addParameter("id", id)
       .executeAndFetchFirst(Sunglasses.class);
       return sunglasses;
+    }
+  }
+
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM sunglasses WHERE id = :id;";
+      con.createQuery(sql)
+      .addParameter("id", this.id)
+      .executeUpdate();
     }
   }
 }

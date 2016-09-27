@@ -59,4 +59,20 @@ public class UserTest {
     User newUser = new User("Joanna", 12345, "(312)542-1532", "test@gmail.com", "123 Main Street", "Portland", "OR", 97215);
     assertEquals(97215, newUser.getZipcode());
   }
+
+  @Test
+  public void save_savesObject_true() {
+    User newUser = new User("Joanna", 12345, "(312)542-1532", "test@gmail.com", "123 Main Street", "Portland", "OR", 97215);
+    newUser.save();
+    assertTrue(User.all().get(0).equals(newUser));
+  }
+
+  @Test
+  public void find_returnsUserWithSameId_user1() {
+    User newUser1 = new User("Joanna", 12345, "(312)542-1532", "test@gmail.com", "123 Main Street", "Portland", "OR", 97215);
+    newUser1.save();
+    User newUser2 = new User("Thomas", 12345, "(312)542-1532", "test@gmail.com", "123 Main Street", "Portland", "OR", 97215);
+    newUser2.save();
+    assertEquals(User.find(newUser1.getId()), newUser1);
+  }
 }

@@ -1,0 +1,38 @@
+<!-- Navigation Bar -->
+<div class="nav">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/sunglasses">Sunglasses</a></li>
+    <li><a href="#">Watches</a></li>
+    <li><a href="#">Account</a></li>
+    <li><a href="/inventory">Inventory</a></li>
+  </ul>
+</div>
+<!-- image above list  -->
+<div class="sunglassesBanner">
+  <img src="img/sunglasses-banner.jpeg" class="img-responsive">
+  <div class="bannerText">
+    <h2>Sunglasses</h2>
+  </div>
+</div>
+<!-- Total list of sunglasses -->
+<div class="center">
+  #if (!($sunglasses.isEmpty()))
+  <div class="hoverColumns">
+  #foreach ($sunglass in $sunglasses)
+    <div class="imgColumns">
+      <div class="hoverImage">
+        <a href="/sunglasses/$sunglass.getId()">
+          <img src="$sunglass.getImgUrl()" class="img-responsive">
+          <div class="hoverText">
+            <h3>$sunglass.getName()</h3>
+          </div>
+        </a>
+      </div>
+    </div>
+  #end
+  </div>
+  #else
+  <p>No inventory</p>
+  #end
+</div>

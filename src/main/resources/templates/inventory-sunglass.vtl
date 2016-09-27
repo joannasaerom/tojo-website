@@ -1,0 +1,21 @@
+<!-- Navigation Bar -->
+<div class="nav">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/sunglasses">Sunglasses</a></li>
+    <li><a href="#">Watches</a></li>
+    <li><a href="#">Account</a></li>
+    <li><a href="/inventory">Inventory</a></li>
+  </ul>
+</div>
+<div class="">
+  #parse( $template2 )
+  <h2>$sunglass.getName()</h2>
+  <img src="$sunglass.getImgUrl()">
+  <h4>Description: $sunglass.getDescription()</h4>
+  <h4>Price: $sunglass.getPrice()</h4>
+  <div class="editIcons">
+    <a href="/inventory/sunglasses/$sunglass.getId()/edit"><button type="submit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
+    <a href="/inventory/sunglasses/$sunglass.getId()/delete"><button type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button></a>
+  </div>
+</div>
