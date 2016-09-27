@@ -110,5 +110,41 @@ public class App {
       response.redirect("/inventory/sunglasses");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    // get("/accounts", (request, response) -> {
+    //   Map<String, Object> model = new HashMap<String, Object>();
+    //
+    //   model.put("user", );
+    //   model.put("template", "templates/user.vtl");
+    //   return new ModelAndView(model, layout);
+    // }, new VelocityTemplateEngine();)
+
+    get("/sunglasses/:sunglassesId/purchase", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Sunglasses sunglass  = Sunglasses.find(Integer.parseInt(request.params(":sunglassesId")));
+      model.put("sunglass", sunglass);
+      model.put("template", "templates/sunglass-purchase.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/sunglasses/:sunglassesId/purchase/invoice", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String name = request.queryParams("name");
+      String phone = request.queryParams("phone");
+      String email = request.queryParams("email");
+      String creditCardNum = request.queryParams("creditCard");
+      String street = request.queryParams("street");
+      String city = request.queryParams("city");
+      String state = request.queryParams("state");
+      int zipcode = (Integer.parseInt(request.queryParams("zipcode")));
+      User user = new User(name, creditCardNum, phone, email, street, city, state, zipcode);
+      Sunglasses sunglass = Sunglasses.find(Integer.parseInt(request.params(":sunglassesId")));
+      sunglass.setCustomerId(user.getId());
+      sunglass.purchase();
+      model.put("sunglass", sunglass);
+      model.put("user", user);
+      model.put("template", "templates/sunglass-purchase.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
   }
 }

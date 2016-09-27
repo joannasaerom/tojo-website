@@ -1,0 +1,24 @@
+<!-- Navigation Bar -->
+<div class="nav">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/sunglasses">Sunglasses</a></li>
+    <li><a href="#">Watches</a></li>
+    <li><a href="/accounts">Account</a></li>
+    <li><a href="/inventory">Inventory</a></li>
+  </ul>
+</div>
+<div class="">
+  #if ($user)
+    <h4>Name: $user.getName()</h4>
+    <h4>Phone: $user.getPhone()</h4>
+    <h4>Email: $user.getEmail()</h4>
+    <h4>Credit Card #: $user.getCreditCardNum()</h4>
+    <h4>Billing Street: $user.getStreet()</h4>
+    <h4>Billing City: $user.getCity()</h4>
+    <h4>Billing State: $user.getState()</h4>
+    <h4>Billing Zipcode: $user.getZipcode()</h4>
+  #else
+    <p>Oops, looks like you don't have an account! < a href="#">Create an account now.</a></p>
+  #end
+</div>

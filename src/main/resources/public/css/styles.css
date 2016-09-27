@@ -1,3 +1,6 @@
+.container{
+  max-width: 1200px;
+}
 .nav li{
   list-style-type: none;
   float: left;
@@ -18,8 +21,6 @@
   -webkit-filter: grayscale(10%);
 }
 .mainBanner img:hover {
-  transform: scale(1.1);
-  -webkit-transform: scale(1.1);
   filter: grayscale(70%);
   -webkit-filter: grayscale(70%);
 }
@@ -36,24 +37,26 @@
   overflow: hidden;
   display: block;
   margin: 0 auto;
+  filter: grayscale(30%);
+  -webkit-filter: grayscale(30%);
 }
-.inventoryImg{
+/*.inventoryImg{
   max-width: 500px;
   overflow: hidden;
   display: block;
   margin: 0 auto;
-}
+}*/
 
 .bannerText{
   position: absolute;
   top: 250px;
   max-width: 1000px;
 }
-.inventoryHover{
+/*.inventoryHover{
   width: 500px;
   position: absolute;
   top: 500px;
-}
+}*/
 h1{
   color: white;
   font-size: 7em;
@@ -124,4 +127,12 @@ h2{
   max-width: 1000px;
   display: block;
   margin: 0 auto;
+}
+.sunglassDescription h2 {
+  color: black;
+}
+.sunglassDescription img {
+  max-width: 600px;
+  float: left;
+  margin-right: 10px;
 }

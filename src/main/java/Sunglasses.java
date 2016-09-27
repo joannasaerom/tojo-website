@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import org.sql2o.*;
-// import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Sunglasses {
   private String name;
@@ -10,17 +10,26 @@ public class Sunglasses {
   private int price;
   private int id;
   private int customerId;
-  // private Date purchaseDate;
+  private int inventory;
+  private Timestamp purchaseDate;
+
+  public static final int MIN_INVENTORY = 0;
+  public static final int MAX_INVENTORY = 10;
 
   public Sunglasses(String _name, String _imgURL, String _description, int _price) {
     this.name = _name;
     this.imgURL = _imgURL;
     this.description = _description;
     this.price = _price;
+    this.inventory = MAX_INVENTORY;
   }
 
   public String getName() {
     return this.name;
+  }
+
+  public Timestamp getPurchaseDate() {
+    return this.purchaseDate;
   }
 
   public String getImgUrl() {
@@ -43,6 +52,10 @@ public class Sunglasses {
     return customerId;
   }
 
+  public int getInventory() {
+    return inventory;
+  }
+
   public void setName(String _name) {
     this.name = _name;
   }
@@ -58,6 +71,11 @@ public class Sunglasses {
   public void setDescription(String _description) {
     this.description = _description;
   }
+
+  public void setCustomerId(int _customerId) {
+    this.customerId = _customerId;
+  }
+
 
   @Override
   public boolean equals(Object otherSunglasses) {
@@ -125,4 +143,21 @@ public class Sunglasses {
       .executeUpdate();
     }
   }
+
+  public void purchase() {
+    if (inventory <= MIN_INVENTORY) {
+      throw new UnsupportedOperationException("Sorry these are out of stock");
+    } else {
+
+      try(Connection con = DB.sql2o.open()) {
+        String sql = "UPDATE sunglasses SET (purchaseDate, customerId) = (now(), :customerId) WHERE id = :id;";
+          con.createQuery(sql)
+            .addParameter("id", this.id)
+            .addParameter("customerId", this.customerId)
+            .executeUpdate();
+      }
+    inventory--;
+    }
+  }
+
 }

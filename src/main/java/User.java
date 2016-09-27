@@ -4,7 +4,7 @@ import org.sql2o.*;
 
 public class User {
   private String name;
-  private int creditCardNum;
+  private String creditCardNum;
   private String phone;
   private String email;
   private String street;
@@ -13,7 +13,7 @@ public class User {
   private int zipcode;
   private int id;
 
-  public User(String _name, int _ccNum, String _phone, String _email, String _street, String _city, String _state, int _zipcode) {
+  public User(String _name, String _ccNum, String _phone, String _email, String _street, String _city, String _state, int _zipcode) {
     this.name = _name;
     this.creditCardNum = _ccNum;
     this.phone = _phone;
@@ -28,7 +28,7 @@ public class User {
     return this.name;
   }
 
-  public int getCreditCardNum() {
+  public String getCreditCardNum() {
     return this.creditCardNum;
   }
 
@@ -60,37 +60,37 @@ public class User {
     return this.id;
   }
 
-  // public void setName(String _name) {
-  //   this.name = _name;
-  // }
-  //
-  // public void setCreditCardNum(int _ccInfo) {
-  //   this.creditCardNum = _ccInfo;
-  // }
-  //
-  // public void setPhone(String _phone) {
-  //   this.phone = _phone;
-  // }
-  //
-  // public void setEmail(String _email) {
-  //   this.email = _email;
-  // }
-  //
-  // public void setStreet(String _street) {
-  //   this.street = _street;
-  // }
-  //
-  // public void setCity(String _city) {
-  //   this.city = _city;
-  // }
-  //
-  // public void setState(String _state) {
-  //   this.state = _state;
-  // }
-  //
-  // public void setZipcode(int _zipcode) {
-  //   this.zipcode = _zipcode;
-  // }
+  public void setName(String _name) {
+    this.name = _name;
+  }
+
+  public void setCreditCardNum(String _ccInfo) {
+    this.creditCardNum = _ccInfo;
+  }
+
+  public void setPhone(String _phone) {
+    this.phone = _phone;
+  }
+
+  public void setEmail(String _email) {
+    this.email = _email;
+  }
+
+  public void setStreet(String _street) {
+    this.street = _street;
+  }
+
+  public void setCity(String _city) {
+    this.city = _city;
+  }
+
+  public void setState(String _state) {
+    this.state = _state;
+  }
+
+  public void setZipcode(int _zipcode) {
+    this.zipcode = _zipcode;
+  }
 
 
   @Override
@@ -100,7 +100,7 @@ public class User {
     } else {
       User newUser = (User) otherUser;
       return this.getName().equals(newUser.getName()) &&
-      this.getCreditCardNum() == newUser.getCreditCardNum() &&
+      this.getCreditCardNum().equals(newUser.getCreditCardNum()) &&
       this.getPhone().equals(newUser.getPhone()) &&
       this.getEmail().equals(newUser.getEmail()) &&
       this.getStreet().equals(newUser.getStreet()) &&
