@@ -39,13 +39,5 @@ public class Sunglasses extends Item {
     }
   }
 
-  public static List<Sunglasses> search(String name) {
-    try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * from items WHERE name LIKE '%:name%';";
-      return con.createQuery(sql)
-      .addParameter("name", name)
-      .throwOnMappingFailure(false)
-      .executeAndFetch(Sunglasses.class);
-    }
-  }
+
 }

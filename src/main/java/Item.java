@@ -3,7 +3,7 @@ import java.util.List;
 import org.sql2o.*;
 import java.sql.Timestamp;
 
-public abstract class Item {
+public class Item {
   public String name;
   public String imgURL;
   public String description;
@@ -144,6 +144,24 @@ public abstract class Item {
     }
   }
 
-  
+  public static List<Object> search(String name) {
+    name = ".*" + name + ".*";
+    List<Object> foundItems = new ArrayList<Object>();
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * from items WHERE name ~* :name;";
+      List<Sunglasses> foundSunglasses = con.createQuery(sql)
+        .addParameter("name", name)
+        .throwOnMappingFailure(false)
+        .executeAndFetch(Sunglasses.class);
+      foundItems.addAll(foundSunglasses);
+      // List<Watch> foundWatches = con.createQuery(sql)
+      //   .addParameter("name", name)
+      //   .throwOnMappingFailure(false)
+      //   .executeAndFetch(Watch.class);
+      // foundItems.addAll(foundWatches);
+    }
+    return foundItems;
+  }
+
 
 }

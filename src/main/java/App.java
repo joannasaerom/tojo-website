@@ -160,18 +160,10 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/search", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      String searchInput = request.queryParams("searchInput");
-      model.put("sunglasses", Sunglasses.search(searchInput));
-      model.put("navtemplate", "templates/nav-bar.vtl");
-      model.put("template", "templates/search-result.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
     get("/search", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-  
+      String searchInput = request.queryParams("searchInput");
+      model.put("sunglasses", Item.search(searchInput));
       model.put("navtemplate", "templates/nav-bar.vtl");
       model.put("template", "templates/search-result.vtl");
       return new ModelAndView(model, layout);
