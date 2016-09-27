@@ -8,12 +8,18 @@
     <li><a href="/inventory">Inventory</a></li>
   </ul>
 </div>
-
-<h2>$sunglass.getName()</h2>
-<img src="$sunglass.getImgUrl()">
-<h4>Description: $sunglass.getDescription()</h4>
-<h4>Price: $sunglass.getPrice()</h4>
-<h4>Remaining Quantity: $sunglass.getInventory()</h4>
+<div class="sunglassDescription">
+  <h2>$sunglass.getName()</h2>
+  <img src="$sunglass.getImgUrl()">
+  <h4>Description: $sunglass.getDescription()</h4>
+  <h4>Price: $sunglass.getPrice()</h4>
+  <h4>Remaining Quantity: $sunglass.getInventory()</h4>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
 <hr>
 <div class="">
   <form action="/sunglasses/$sunglass.getId()/purchase/invoice" method="post">

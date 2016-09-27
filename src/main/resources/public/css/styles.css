@@ -40,23 +40,31 @@
   filter: grayscale(30%);
   -webkit-filter: grayscale(30%);
 }
-/*.inventoryImg{
-  max-width: 500px;
+.inventoryImg{
+  max-width: 600px;
   overflow: hidden;
   display: block;
   margin: 0 auto;
-}*/
-
+  max-height: 500px;
+}
+.left{
+  float: left;
+}
 .bannerText{
   position: absolute;
   top: 250px;
   max-width: 1000px;
 }
-/*.inventoryHover{
-  width: 500px;
-  position: absolute;
-  top: 500px;
-}*/
+.inventoryHover{
+  width: 600px;
+  position: fixed;
+  top: 250px;
+}
+.inventoryHover h3{
+  text-align: center;
+  color: white;
+}
+
 h1{
   color: white;
   font-size: 7em;
@@ -106,21 +114,21 @@ h2{
   width: 250px;
 }
 
-.hoverImage a:hover{
+.hoverImage a:hover, .inventoryImg a:hover{
   color: white;
   text-decoration: none;
   background-color: none;
 }
 
-.hoverImage:hover .hoverText{
+.hoverImage:hover .hoverText, .inventoryImg:hover .inventoryHover{
   opacity: 1;
 }
-.hoverImage:hover img{
+.hoverImage:hover img, .inventoryImg:hover img{
   opacity: 0.5;
   background-color: rgba(0,0,0,0.9);
 }
 
-.hoverImage:hover{
+.hoverImage:hover, .inventoryImg:hover{
   background-color: rgba(0,0,102,0.9);
 }
 .hoverColumns{
@@ -135,4 +143,32 @@ h2{
   max-width: 600px;
   float: left;
   margin-right: 10px;
+}
+.inventorySunglasses img {
+  max-width: 300px;
+}
+.inventorySunglasses {
+
+}
+input{
+  border: none;
+  border-bottom: 2px solid black;
+  display: table-cell;
+  width: 300px;
+  -webkit-transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out;
+}
+input:focus {
+  outline: none;
+  border-bottom: 3px solid black;
+  width: 100%;
+}
+form{
+  display: table;
+  width: 400px;
+  margin: 0 auto;
+}
+label{
+  text-align: left;
+  display: block;
 }
